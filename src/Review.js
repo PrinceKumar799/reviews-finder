@@ -28,7 +28,7 @@ const Review = () => {
     }
     if (randomIdx === people.length) {
       setCurrentReview(randomIdx - 1);
-    } else if (randomIdx === 0) setCurrentReview(randomIdx + 1);
+    } else if (randomIdx < 0) setCurrentReview(randomIdx + 1);
     else setCurrentReview(randomIdx);
   };
 
