@@ -1,9 +1,5 @@
 const Image = ({ image }) => {
-  return (
-    <div className="image-container">
-      <img src={image} className="person-img"></img>
-    </div>
-  );
+  return <img src={image} className="person-img"></img>;
 };
 
 export default Image;

@@ -20,15 +20,39 @@ const Review = () => {
       setCurrentReview(currentReview + 1);
     }
   };
+
+  const randomClickHandler = () => {
+    let randomIdx = Math.floor(Math.random() * people.length);
+    if (randomIdx === currentReview) {
+      randomIdx = currentReview + 1;
+    }
+    if (randomIdx === people.length) {
+      setCurrentReview(randomIdx - 1);
+    } else if (randomIdx === 0) setCurrentReview(randomIdx + 1);
+    else setCurrentReview(randomIdx);
+  };
+
   return (
-    <div>
-      <Image image={people[currentReview].image}></Image>
-      <p>{people[currentReview].text}</p>
+    <article className="review">
+      <div className="img-container">
+        <Image image={people[currentReview].image}></Image>{" "}
+        <span className="quote-icon">
+          <FaQuoteRight />
+        </span>
+      </div>
+      <h4 className="author">{people[currentReview].name}</h4>
+      <p className="job">{people[currentReview].job}</p>
+      <div></div>
+      <p className="info">{people[currentReview].text}</p>
       <span>
-        <FaChevronLeft onClick={leftClickHandler} />
-        <FaChevronRight onClick={rightClickHandler} />
+        <FaChevronLeft className="prev-btn" onClick={leftClickHandler} />
+        <FaChevronRight className="next-btn" onClick={rightClickHandler} />
       </span>
-    </div>
+      <br></br>
+      <button className="random-btn" onClick={randomClickHandler}>
+        Surprise Me
+      </button>
+    </article>
   );
 };
 
